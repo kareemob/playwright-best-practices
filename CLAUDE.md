@@ -7,7 +7,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 1. **It's the source of truth.** When answering a Playwright question or writing Playwright code with the owner, check the relevant article first and follow its rules. Cite it as `file.md` (section) so the owner can trace the reasoning.
 2. **Keep it consistent.** If an answer or a new article would contradict an existing one, point out the conflict. Don't quietly pick a side. Then update the older article or flag it.
 3. **Grow it, don't duplicate it.** Before writing a new article, check whether the topic belongs in an existing one. Add cross-links rather than re-explaining.
-4. **Keep the index current.** Whenever an article is added, renamed, or gets a new key rule, update the index and "Core rules" below, and the article tables in `README.md`. Links in the README use `playwright%20configs/` for the folder with a space.
+4. **Keep the index current.** Whenever an article is added, renamed, or gets a new key rule, update the index and "Core rules" below, and the article tables in `README.md`. Links in the README use `%20` for folder names with a space (`playwright%20configs/`, `playwright%20actions/`).
 5. **Verify against current Playwright.** If an article looks outdated against current Playwright docs or behavior, say so and propose an edit.
 
 ## Index
@@ -44,6 +44,13 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 | `playwright configs/03-projects-multi-browser-strategy.md` | Projects for setup dependency, environments, viewports, browsers |
 | `playwright configs/05-playwright-github-actions.md` | GitHub Actions workflow, secrets, sharding, multi-browser schedule |
 
+### Actions (`playwright actions/`)
+| File | Topic |
+|---|---|
+| `playwright actions/01-actionability-checks.md` | The 5 actionability checks, which action runs which, reading the Call log, `force` vs alternatives, `trial: true` |
+| `playwright actions/02-dialogs-iframes-new-tabs.md` | Dialogs (auto-dismissed, `page.on`/`once`), `frameLocator`, new tabs with `waitForEvent('page')`, diagnosis table |
+| `playwright actions/03-actions-reference.md` | Syntax and options for every action, key names, `selectOption`, `setInputFiles`, `dragTo` fallback, shared options |
+
 ## Core rules (quick reference, details in the articles)
 
 **Locators** (`10-locator-strategy.md`)
@@ -63,6 +70,14 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 - Use at most 1–2 levels of `describe`. A spec file holds 5–12 tests, split by feature. A test title should explain the failure on its own.
 - Use `test.step` only for long multi-phase flows, with titles in the user's language.
 - `.env` and `playwright/.auth/` go in `.gitignore`. `.env.example` is committed.
+
+**Actions** (`playwright actions/`)
+- Before an action, Playwright checks visible, stable, enabled, editable and receives events. `fill` skips stable and receives events, so it is more stable than `click`.
+- Read the last line of the Call log before raising a timeout. `intercepts pointer events` names the blocking element.
+- Avoid `force: true`. Wait for the blocker to disappear or close it first. If `force` is truly needed, add a comment that explains why.
+- Playwright dismisses dialogs automatically. Register `page.on('dialog')` or `page.once('dialog')` before the click that triggers it.
+- Elements inside an iframe need `frameLocator`. A new tab needs `context().waitForEvent('page')`, with the promise prepared before the click. If you only need the link target, check the `href` instead.
+- Use `fill` for typing, `check`/`uncheck` for checkboxes (they verify the result), and `pressSequentially` only for fields that react to each keystroke. `selectOption` works only on a native `<select>`, and `setInputFiles` must target the `input[type=file]` itself.
 
 **Annotations** (`06-test-annotations-reference.md`)
 - `skip` means the environment isn't suitable. `fixme` means the test is broken. `fail` marks a known bug.
@@ -95,4 +110,4 @@ Style:
 - Use TypeScript code blocks.
 - Use `> **Important**` / `> **Tip**` callouts.
 - Use decision tables for "when to use what" questions.
-- File names are kebab-case `.md`, prefixed with a two-digit order number (`01-`, `02-`, ...). Numbering is separate for the main folder and for `playwright configs/`. Config and CI topics go in `playwright configs/`.
+- File names are kebab-case `.md`, prefixed with a two-digit order number (`01-`, `02-`, ...). Numbering is separate for the main folder and for each subfolder. Config and CI topics go in `playwright configs/`. Action topics go in `playwright actions/`.

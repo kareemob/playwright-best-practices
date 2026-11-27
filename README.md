@@ -44,6 +44,13 @@ Each article starts from a problem you hit in real automation work. It explains 
 | [Projects and Multiple Browsers](playwright%20configs/03-projects-multi-browser-strategy.md) | Using projects for login setup, environments, screen sizes, and browsers |
 | [Running Playwright on GitHub Actions](playwright%20configs/05-playwright-github-actions.md) | A working CI workflow, secrets, sharding, and when to run each browser |
 
+### Actions
+| Article | What you'll learn |
+|---|---|
+| [Actionability Checks](playwright%20actions/01-actionability-checks.md) | What Playwright verifies before every action, how to read the Call log, and why `force: true` is rarely the answer |
+| [Dialogs, iFrames, and New Tabs](playwright%20actions/02-dialogs-iframes-new-tabs.md) | The three reasons a correct locator finds nothing, and how to handle each one |
+| [Complete Actions Reference](playwright%20actions/03-actions-reference.md) | The syntax and options for every action, plus the mistakes that make tests flaky |
+
 ## The rules in one minute
 
 - **Locators:** `getByRole` → `getByLabel` → `getByPlaceholder`/`getByText` → `getByTestId` → CSS. Never XPath.
