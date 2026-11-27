@@ -7,7 +7,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 1. **It's the source of truth.** When answering a Playwright question or writing Playwright code with the owner, check the relevant article first and follow its rules. Cite it as `file.md` (section) so the owner can trace the reasoning.
 2. **Keep it consistent.** If an answer or a new article would contradict an existing one, point out the conflict. Don't quietly pick a side. Then update the older article or flag it.
 3. **Grow it, don't duplicate it.** Before writing a new article, check whether the topic belongs in an existing one. Add cross-links rather than re-explaining.
-4. **Keep the index current.** Whenever an article is added, renamed, or gets a new key rule, update the index and "Core rules" below.
+4. **Keep the index current.** Whenever an article is added, renamed, or gets a new key rule, update the index and "Core rules" below, and the article tables in `README.md`. Links in the README use `playwright%20configs/` for the folder with a space.
 5. **Verify against current Playwright.** If an article looks outdated against current Playwright docs or behavior, say so and propose an edit.
 
 ## Index
