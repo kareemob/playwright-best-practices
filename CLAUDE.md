@@ -23,6 +23,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 | File | Topic |
 |---|---|
 | `locator-strategy.md` | Locator priority order and common locator mistakes |
+| `strict-mode.md` | Strict mode violations, how to narrow a locator, when `first()` is acceptable |
 | `auto-waiting-web-first-assertions.md` | Auto-waiting checks, retrying vs value assertions, why no `sleep` |
 | `waiting-and-load-states.md` | Load states, `networkidle`, `waitForURL`, `waitForResponse`, decision tree |
 | `fixtures-instead-of-hooks.md` | `base.extend`, fixture composition, `scope: 'worker'`, `auto: true` |
@@ -49,6 +50,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 - Order: `getByRole` → `getByLabel` → `getByPlaceholder`/`getByText` → `getByTestId` → CSS. Never XPath.
 - Describe what the element *does for the user*, not where it sits in the DOM. Use `.filter({ hasText })` instead of `.nth()`.
 - If a `data-testid` is missing, add it to the app code yourself.
+- A strict mode violation means the locator is vague. Narrow it by name, then by context (chaining + `filter`). Use `first()`/`nth()` only when "the first" is the actual requirement (`strict-mode.md`).
 
 **Waiting & assertions** (`auto-waiting-web-first-assertions.md`, `waiting-and-load-states.md`)
 - `await expect(locator).toBeVisible()` retries. `expect(await locator.isVisible())` checks one moment only and becomes flaky.

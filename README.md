@@ -23,6 +23,7 @@ Each article starts from a problem you hit in real automation work. It explains 
 | Article | What you'll learn |
 |---|---|
 | [Locator Strategy](locator-strategy.md) | The order to choose locators in, from `getByRole` down to CSS, and why XPath never makes the list |
+| [Strict Mode](strict-mode.md) | Why a locator that matches two elements fails, and how to fix it without `first()` |
 | [Auto-waiting and Web-First Assertions](auto-waiting-web-first-assertions.md) | Why Playwright tests need no `sleep`, and how retrying assertions work |
 | [Waiting and Load States](waiting-and-load-states.md) | Load states, why to avoid `networkidle`, and `waitForURL` / `waitForResponse` |
 | [Fixtures Instead of Hooks](fixtures-instead-of-hooks.md) | Building fixtures that compose, with worker scope and auto fixtures |
