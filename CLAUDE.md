@@ -18,7 +18,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 | `01-selenium-vs-cypress-vs-playwright.md` | Architecture differences and when to choose each tool |
 | `02-automation-project-structure.md` | Folder layout: `tests/`, `pages/`, `components/`, `fixtures/`, `clients/`, `models/`, `data/` |
 | `03-playwright-cli-commands.md` | Everyday `npx playwright` commands and quick reference |
-| `12-what-to-automate.md` | Choosing which flows to automate with E2E and which to leave to unit or visual tests |
+| `12-what-to-automate.md` | Which flows to automate with E2E, build order (Login first), and the definition of "done" |
 
 ### Writing tests
 | File | Topic |
@@ -56,6 +56,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 
 **Test planning** (`12-what-to-automate.md`)
 - Automate the flow that someone would call you about if it broke. Leave validation messages to unit tests, visual details to visual testing, and third-party widgets out of E2E.
+- Build tests from least dependent to most dependent (Login first). A suite is "done" only when it passes in parallel, passes twice in a row without manual cleanup, passes on CI, has failures that are clear from the test name, and can be read by someone else without explanation.
 
 **Locators** (`10-locator-strategy.md`)
 - Order: `getByRole` → `getByLabel` → `getByPlaceholder`/`getByText` → `getByTestId` → CSS. Never XPath.
