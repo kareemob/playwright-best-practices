@@ -18,6 +18,7 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 | `01-selenium-vs-cypress-vs-playwright.md` | Architecture differences and when to choose each tool |
 | `02-automation-project-structure.md` | Folder layout: `tests/`, `pages/`, `components/`, `fixtures/`, `clients/`, `models/`, `data/` |
 | `03-playwright-cli-commands.md` | Everyday `npx playwright` commands and quick reference |
+| `12-what-to-automate.md` | Choosing which flows to automate with E2E and which to leave to unit or visual tests |
 
 ### Writing tests
 | File | Topic |
@@ -52,6 +53,9 @@ This folder is a **shared knowledge base** on Playwright best practices, written
 | `playwright actions/03-actions-reference.md` | Syntax and options for every action, key names, `selectOption`, `setInputFiles`, `dragTo` fallback, shared options |
 
 ## Core rules (quick reference, details in the articles)
+
+**Test planning** (`12-what-to-automate.md`)
+- Automate the flow that someone would call you about if it broke. Leave validation messages to unit tests, visual details to visual testing, and third-party widgets out of E2E.
 
 **Locators** (`10-locator-strategy.md`)
 - Order: `getByRole` → `getByLabel` → `getByPlaceholder`/`getByText` → `getByTestId` → CSS. Never XPath.

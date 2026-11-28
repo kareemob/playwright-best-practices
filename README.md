@@ -18,6 +18,7 @@ Each article starts from a problem you hit in real automation work. It explains 
 | [Selenium vs Cypress vs Playwright](01-selenium-vs-cypress-vs-playwright.md) | How the three tools differ in architecture, and when to choose each one |
 | [Automation Project Structure](02-automation-project-structure.md) | Where every file goes: pages, components, fixtures, API clients, and test data |
 | [Playwright CLI Commands](03-playwright-cli-commands.md) | The `npx playwright` commands you'll use every day |
+| [What to Automate](12-what-to-automate.md) | Which flows deserve E2E tests, and which belong to unit or visual tests |
 
 ### Writing Tests
 | Article | What you'll learn |
